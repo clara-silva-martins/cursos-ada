@@ -1,32 +1,36 @@
 package Animais;
 
-public class Cachorro {
-    private String nome;
-    private String cor;
-    private int altura;
-    private double peso;
-    private int tamanhoDoRabo;
-    private String estadoDeEspirito;
+public class Cachorro extends Animal {
 
-    public Cachorro(){}
+    static int numeroDeCachorros;
+
+    private int tamanhoDoRabo;
+
+
+    //Aqui foi usado construtor e passado os valores no main através do construtor
+    //public Cachorro(){}
 
     public Cachorro (String nome, String cor, int altura, double peso, int tamanhoDoRabo, String estadoDeEspirito){
+        super(nome, cor, peso);
         this.nome = nome;
         this.cor = cor;
         this.altura = altura;
         this.peso = peso;
         this.tamanhoDoRabo = tamanhoDoRabo;
         this.estadoDeEspirito = estadoDeEspirito;
+
+        numeroDeCachorros ++;
+    }
+
+    public static int getNumeroDeCachorros() {
+        return numeroDeCachorros;
+    }
+
+    public static void setNumeroDeCachorros(int numeroDeCachorros) {
+        Cachorro.numeroDeCachorros = numeroDeCachorros;
     }
 
 
-    public void comer(){
-        System.out.println("Comendo");
-    }
-
-    public void latir(){
-        System.out.println("au au");
-    }
 
     public String pegar(){
         return "bolinha";
@@ -88,6 +92,21 @@ public class Cachorro {
         return estadoDeEspirito;
     }
 
+    //Usando o metodo toString que serve para
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Cachorro{" +
+                "nome='" + nome + '\'' +
+                "altura='" + altura+ '\'' +
+                '}';
+    }
+
+    @Override
+    public void soar() {
+        System.out.println("AU AU");
+    }
+
     public String interagir(String acao){
         switch (acao){
             case "carinho":
@@ -104,6 +123,8 @@ public class Cachorro {
         }
 
         return this.estadoDeEspirito;
+
+
     }
 
 
